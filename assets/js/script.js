@@ -9,6 +9,12 @@ var taskFormHandler = function(event) {
     var taskTypeInput = document.querySelector("select[name='task-type']").value;
     console.log(taskTypeInput);
 
+    //check if input variables are empty strings
+    if(!taskNameInput || !taskTypeInput){
+        alert("You need to fill out the task form!");
+        return false;
+    }
+
     // package up data as an object
     var taskDataObj = {
         name: taskNameInput,
@@ -18,6 +24,8 @@ var taskFormHandler = function(event) {
     // send it as an argument to createTaskEl
     createTaskEl(taskDataObj);
 
+    //allows us to reset without clearing whole form
+    formEl.reset();
 
 };
 //holds code that creates a new task HTML element
